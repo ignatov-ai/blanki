@@ -27,16 +27,16 @@ print('Размерность x_train:', x_train.shape)
 print(x_train.shape[0], 'Размер train')
 print(x_test.shape[0], 'Размер test')
 
-batch_size = 128
+batch_size = 64
 epochs = 10
 
 model = Sequential()
-model.add(Conv2D(32, kernel_size=(3, 3),activation='relu',input_shape=input_shape))
-model.add(Conv2D(64, (3, 3), activation='relu'))
+model.add(Conv2D(32, kernel_size=(3, 3),activation='sigmoid',input_shape=input_shape))
+model.add(Conv2D(64, (3, 3), activation='sigmoid'))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 model.add(Dropout(0.25))
 model.add(Flatten())
-model.add(Dense(256, activation='relu'))
+model.add(Dense(256, activation='sigmoid'))
 model.add(Dropout(0.5))
 model.add(Dense(num_classes, activation='softmax'))
 model.compile(loss=keras.losses.categorical_crossentropy,optimizer=keras.optimizers.Adadelta(),metrics=['accuracy'])
