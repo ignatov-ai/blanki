@@ -3,6 +3,7 @@ import numpy as np
 import cv2
 import imutils
 
+
 # подготовка изображения к распознаванию
 def imageProcessing(image):
     # конвертация изображения в градации серого. Это уберёт цветовой шум
@@ -17,7 +18,7 @@ def imageProcessing(image):
 
     # показать серое изображение с определенными границами
     #cv2.imshow("grayBlur", grayImageBlur)
-    #cv2.imshow("Edge Detected Image", edgedImage)
+    cv2.imshow("Edge Detected Image", edgedImage)
 
     # найти контуры на обрезанном изображении, рационально организовать область
     # оставить только большие варианты
@@ -115,7 +116,7 @@ def pageOrientation(scanBW):
         x_crop = width - x,width
         y_crop = height - y,height
         s = (width-2*dx) * (y-dy)
-        print(x_crop, y_crop)
+        #print(x_crop, y_crop)
 
         crop_img = scanBW[height - y:height-dy, dx:width-dx]
         count = np.count_nonzero(crop_img)
@@ -137,7 +138,7 @@ def pageOrientation(scanBW):
         #cv2.destroyWindow("cropped")
 
 # параметр для сканируемого изображения
-args_image = 'blanki/02.jpg'
+args_image = 'blanki/001.jpg'
 
 # прочитать изображение
 img_original = cv2.imread(args_image)
